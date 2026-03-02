@@ -1,0 +1,1306 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Folgat.eu — Innovative Investments for Values</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* ═══════════════════════════════════════════
+           CSS VARIABLES & RESET
+           ═══════════════════════════════════════════ */
+      :root {
+        --navy: #0e2d87;
+        --slate: #475e88;
+        --periwinkle: #758bb3;
+        --light-grey: #f5f5f5;
+        --white: #ffffff;
+        --black: #111111;
+
+        --font-heading: "Times New Roman", Times, serif;
+        --font-body: Verdana, Geneva, Tahoma, sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--black);
+        background: var(--white);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ═══════════════════════════════════════════
+           NAVIGATION
+           ═══════════════════════════════════════════ */
+      .navbar-folgat {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(14, 45, 135, 0.08);
+        transition: box-shadow 0.3s ease;
+      }
+
+      .navbar-folgat.scrolled {
+        box-shadow: 0 2px 20px rgba(14, 45, 135, 0.08);
+      }
+
+      .navbar-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+        height: 72px;
+      }
+
+      .logo {
+        font-family: var(--font-heading);
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--navy);
+        text-decoration: none;
+        letter-spacing: -0.02em;
+      }
+
+      .logo span {
+        color: var(--periwinkle);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        font-family: var(--font-body);
+        font-size: 0.8rem;
+        color: var(--slate);
+        text-decoration: none;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        transition: color 0.25s ease;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1.5px;
+        background: var(--navy);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--navy);
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .btn-contact-nav {
+        font-family: var(--font-body);
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: var(--navy);
+        color: var(--white);
+        border: none;
+        padding: 10px 28px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-contact-nav:hover {
+        background: var(--slate);
+        transform: translateY(-1px);
+      }
+
+      /* Mobile nav toggle */
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+      }
+
+      .nav-toggle span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--navy);
+        margin: 5px 0;
+        transition: all 0.3s ease;
+      }
+
+      /* ═══════════════════════════════════════════
+           HERO SECTION
+           ═══════════════════════════════════════════ */
+      .hero {
+        position: relative;
+        height: 100vh;
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: var(--navy);
+      }
+
+      .hero-video-wrapper {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+      }
+
+      .hero-video-wrapper video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Placeholder background for when no video is loaded */
+      .hero-video-placeholder {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background:
+          radial-gradient(
+            ellipse at 30% 50%,
+            rgba(117, 139, 179, 0.35) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse at 70% 30%,
+            rgba(14, 45, 135, 0.25) 0%,
+            transparent 50%
+          ),
+          linear-gradient(
+            160deg,
+            #0a1f5c 0%,
+            #0e2d87 35%,
+            #1a3a8f 60%,
+            #0c2466 100%
+          );
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background: rgba(10, 25, 70, 0.55);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        padding: 0 40px;
+        max-width: 900px;
+      }
+
+      .hero-tagline {
+        font-family: var(--font-body);
+        font-size: 0.75rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--periwinkle);
+        margin-bottom: 24px;
+        opacity: 0;
+        animation: fadeUp 0.8s ease 0.3s forwards;
+      }
+
+      .hero-heading {
+        font-family: var(--font-heading);
+        font-size: clamp(2.4rem, 5vw, 4rem);
+        font-weight: 400;
+        color: var(--white);
+        line-height: 1.15;
+        letter-spacing: -0.01em;
+        opacity: 0;
+        animation: fadeUp 0.8s ease 0.5s forwards;
+      }
+
+      .hero-heading em {
+        font-style: italic;
+        color: var(--periwinkle);
+      }
+
+      .hero-line {
+        width: 60px;
+        height: 1.5px;
+        background: var(--periwinkle);
+        margin: 32px auto 0;
+        opacity: 0;
+        animation: fadeUp 0.8s ease 0.7s forwards;
+      }
+
+      .hero-scroll-indicator {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+        opacity: 0;
+        animation: fadeUp 0.8s ease 1s forwards;
+      }
+
+      .hero-scroll-indicator a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.65rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        gap: 8px;
+        transition: color 0.3s ease;
+      }
+
+      .hero-scroll-indicator a:hover {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .scroll-arrow {
+        width: 20px;
+        height: 20px;
+        border-right: 1.5px solid currentColor;
+        border-bottom: 1.5px solid currentColor;
+        transform: rotate(45deg);
+        animation: bounceArrow 2s ease infinite;
+      }
+
+      /* ═══════════════════════════════════════════
+           SECTION COMMON STYLES
+           ═══════════════════════════════════════════ */
+      .section {
+        padding: 120px 40px;
+      }
+
+      .section-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-label {
+        font-family: var(--font-body);
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--periwinkle);
+        margin-bottom: 16px;
+      }
+
+      .section-heading {
+        font-family: var(--font-heading);
+        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+        font-weight: 400;
+        color: var(--navy);
+        line-height: 1.2;
+        margin-bottom: 40px;
+      }
+
+      .section-divider {
+        width: 40px;
+        height: 1.5px;
+        background: var(--periwinkle);
+        margin-bottom: 32px;
+      }
+
+      /* ═══════════════════════════════════════════
+           WHO WE ARE
+           ═══════════════════════════════════════════ */
+      .who-we-are {
+        background: var(--white);
+      }
+
+      .who-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .who-text p {
+        font-size: 0.9rem;
+        color: var(--slate);
+        margin-bottom: 20px;
+        line-height: 1.85;
+      }
+
+      .who-text p:first-of-type {
+        font-size: 1.05rem;
+        color: var(--black);
+        font-weight: 600;
+        line-height: 1.6;
+      }
+
+      .who-image-wrapper {
+        position: relative;
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .globe-placeholder {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background:
+          radial-gradient(
+            circle at 35% 35%,
+            rgba(117, 139, 179, 0.3) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 65% 65%,
+            rgba(14, 45, 135, 0.15) 0%,
+            transparent 40%
+          ),
+          linear-gradient(135deg, var(--light-grey) 0%, #e8edf5 100%);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(117, 139, 179, 0.15);
+      }
+
+      .globe-placeholder::before {
+        content: "";
+        position: absolute;
+        inset: 15%;
+        border-radius: 50%;
+        border: 1px dashed rgba(14, 45, 135, 0.12);
+      }
+
+      .globe-placeholder::after {
+        content: "";
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1px;
+        height: 80%;
+        background: rgba(14, 45, 135, 0.08);
+      }
+
+      .globe-label {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: var(--font-body);
+        font-size: 0.65rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--periwinkle);
+      }
+
+      /* ═══════════════════════════════════════════
+           WHAT WE DO
+           ═══════════════════════════════════════════ */
+      .what-we-do {
+        background: var(--light-grey);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        margin-top: 60px;
+      }
+
+      .service-card {
+        background: var(--white);
+        border: 1px solid rgba(14, 45, 135, 0.06);
+        transition: all 0.4s ease;
+        overflow: hidden;
+      }
+
+      .service-card:hover {
+        box-shadow: 0 12px 40px rgba(14, 45, 135, 0.08);
+        transform: translateY(-4px);
+      }
+
+      .service-image {
+        width: 100%;
+        height: 260px;
+        background: linear-gradient(135deg, #dce3f0 0%, #c5d0e6 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .service-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 40px,
+          rgba(14, 45, 135, 0.03) 40px,
+          rgba(14, 45, 135, 0.03) 41px
+        );
+      }
+
+      .service-image-label {
+        position: absolute;
+        bottom: 16px;
+        left: 20px;
+        font-family: var(--font-body);
+        font-size: 0.6rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--slate);
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.85);
+        padding: 4px 10px;
+      }
+
+      .service-body {
+        padding: 36px 32px 40px;
+      }
+
+      .service-title {
+        font-family: var(--font-heading);
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: var(--navy);
+        margin-bottom: 20px;
+        line-height: 1.3;
+      }
+
+      .service-body p {
+        font-size: 0.85rem;
+        color: var(--slate);
+        line-height: 1.85;
+        margin-bottom: 14px;
+      }
+
+      /* ═══════════════════════════════════════════
+           CONTACT SECTION
+           ═══════════════════════════════════════════ */
+      .contact {
+        background: var(--navy);
+        color: var(--white);
+      }
+
+      .contact .section-label {
+        color: var(--periwinkle);
+      }
+      .contact .section-heading {
+        color: var(--white);
+      }
+      .contact .section-divider {
+        background: var(--periwinkle);
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: start;
+      }
+
+      .contact-info p {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.85;
+        margin-bottom: 8px;
+      }
+
+      .contact-info a {
+        color: var(--periwinkle);
+        text-decoration: none;
+        transition: color 0.25s ease;
+      }
+
+      .contact-info a:hover {
+        color: var(--white);
+      }
+
+      .contact-actions {
+        margin-top: 36px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .btn-contact {
+        font-family: var(--font-body);
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: var(--white);
+        color: var(--navy);
+        border: none;
+        padding: 14px 36px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-contact:hover {
+        background: var(--periwinkle);
+        color: var(--white);
+        transform: translateY(-1px);
+      }
+
+      .linkedin-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.6);
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .linkedin-link:hover {
+        border-color: var(--periwinkle);
+        color: var(--white);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .linkedin-link svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+      }
+
+      .contact-map-placeholder {
+        width: 100%;
+        height: 320px;
+        background: linear-gradient(
+          135deg,
+          rgba(71, 94, 136, 0.3) 0%,
+          rgba(14, 45, 135, 0.5) 100%
+        );
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .contact-map-placeholder::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 30px,
+            rgba(255, 255, 255, 0.02) 30px,
+            rgba(255, 255, 255, 0.02) 31px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 30px,
+            rgba(255, 255, 255, 0.02) 30px,
+            rgba(255, 255, 255, 0.02) 31px
+          );
+      }
+
+      .map-label {
+        font-size: 0.65rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.3);
+        z-index: 1;
+      }
+
+      /* ═══════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════ */
+      .footer {
+        background: #060f2a;
+        padding: 40px;
+        text-align: center;
+      }
+
+      .footer p {
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.35);
+        letter-spacing: 0.04em;
+      }
+
+      .footer span {
+        color: rgba(255, 255, 255, 0.55);
+      }
+
+      /* ═══════════════════════════════════════════
+           CONTACT MODAL
+           ═══════════════════════════════════════════ */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        background: rgba(10, 20, 60, 0.7);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s ease;
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .modal-content {
+        background: var(--white);
+        width: 100%;
+        max-width: 520px;
+        padding: 56px 48px;
+        position: relative;
+        transform: translateY(20px);
+        transition: transform 0.35s ease;
+      }
+
+      .modal-overlay.active .modal-content {
+        transform: translateY(0);
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 24px;
+        background: none;
+        border: none;
+        font-size: 1.4rem;
+        color: var(--slate);
+        cursor: pointer;
+        line-height: 1;
+        padding: 4px;
+        transition: color 0.25s ease;
+      }
+
+      .modal-close:hover {
+        color: var(--navy);
+      }
+
+      .modal-heading {
+        font-family: var(--font-heading);
+        font-size: 1.6rem;
+        font-weight: 400;
+        color: var(--navy);
+        margin-bottom: 8px;
+      }
+
+      .modal-subtitle {
+        font-size: 0.8rem;
+        color: var(--slate);
+        margin-bottom: 36px;
+      }
+
+      .form-group {
+        margin-bottom: 24px;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--slate);
+        margin-bottom: 8px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        border: 1px solid rgba(14, 45, 135, 0.12);
+        padding: 12px 16px;
+        font-family: var(--font-body);
+        font-size: 0.85rem;
+        color: var(--black);
+        background: var(--light-grey);
+        outline: none;
+        transition:
+          border-color 0.25s ease,
+          background 0.25s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        border-color: var(--navy);
+        background: var(--white);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .btn-submit {
+        font-family: var(--font-body);
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: var(--navy);
+        color: var(--white);
+        border: none;
+        padding: 14px 40px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+
+      .btn-submit:hover {
+        background: var(--slate);
+      }
+
+      .form-success {
+        display: none;
+        text-align: center;
+        padding: 40px 0;
+      }
+
+      .form-success.show {
+        display: block;
+      }
+      .form-fields.hide {
+        display: none;
+      }
+
+      .form-success .checkmark {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--navy);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .form-success .checkmark svg {
+        width: 22px;
+        height: 22px;
+        fill: none;
+        stroke: var(--white);
+        stroke-width: 2.5;
+      }
+
+      .form-success h3 {
+        font-family: var(--font-heading);
+        font-size: 1.3rem;
+        color: var(--navy);
+        margin-bottom: 8px;
+      }
+
+      .form-success p {
+        font-size: 0.85rem;
+        color: var(--slate);
+      }
+
+      /* ═══════════════════════════════════════════
+           ANIMATIONS
+           ═══════════════════════════════════════════ */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes bounceArrow {
+        0%,
+        100% {
+          transform: rotate(45deg) translateY(0);
+        }
+        50% {
+          transform: rotate(45deg) translateY(6px);
+        }
+      }
+
+      /* Scroll reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ═══════════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════════ */
+      @media (max-width: 992px) {
+        .who-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+
+        .who-image-wrapper {
+          max-width: 400px;
+          margin: 0 auto;
+          order: -1;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+
+        .section {
+          padding: 80px 24px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .navbar-inner {
+          padding: 0 24px;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 72px;
+          left: 0;
+          width: 100%;
+          background: var(--white);
+          flex-direction: column;
+          padding: 32px 24px;
+          gap: 24px;
+          border-bottom: 1px solid rgba(14, 45, 135, 0.08);
+          transform: translateY(-100%);
+          opacity: 0;
+          pointer-events: none;
+          transition: all 0.35s ease;
+        }
+
+        .nav-links.open {
+          transform: translateY(0);
+          opacity: 1;
+          pointer-events: all;
+        }
+
+        .nav-toggle {
+          display: block;
+        }
+
+        .hero-content {
+          padding: 0 24px;
+        }
+
+        .modal-content {
+          padding: 40px 28px;
+          margin: 16px;
+        }
+
+        .contact-actions {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ════════════════════════════════════
+         NAVIGATION
+         ════════════════════════════════════ -->
+    <nav class="navbar-folgat" id="navbar">
+      <div class="navbar-inner">
+        <a href="#" class="logo">Folgat<span>.</span></a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#who-we-are">Who We Are</a></li>
+          <li><a href="#what-we-do">What We Do</a></li>
+          <li>
+            <button class="btn-contact-nav" onclick="openModal()">
+              Contact Us
+            </button>
+          </li>
+        </ul>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Toggle navigation"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ════════════════════════════════════
+         HERO
+         ════════════════════════════════════ -->
+    <section class="hero" id="hero">
+      <div class="hero-video-wrapper">
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          src="https://testfolgat.my.canva.site/_assets/video/60452bd4decd2a7f5a0cbbf3c213c0bf.mp4"
+        ></video>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-tagline">Defence &amp; Security Systems</p>
+        <h1 class="hero-heading">
+          Innovative Investments<br />for <em>Values</em>
+        </h1>
+        <div class="hero-line"></div>
+      </div>
+      <div class="hero-scroll-indicator">
+        <a href="#who-we-are">
+          <span>Scroll</span>
+          <div class="scroll-arrow"></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         WHO WE ARE
+         ════════════════════════════════════ -->
+    <section class="section who-we-are" id="who-we-are">
+      <div class="section-container">
+        <div class="who-grid">
+          <div class="who-text reveal">
+            <p class="section-label">Who We Are</p>
+            <h2 class="section-heading">
+              Leading Global Provider<br />of Advanced Materials
+            </h2>
+            <div class="section-divider"></div>
+            <p>Leading global provider of advanced materials.</p>
+            <p>
+              FOLGAT is a global innovative provider to the world's largest
+              homeland security equipment manufacturers and CBRN producers. We
+              provide and service the best scintillation crystals and detectors.
+              FOLGAT works closely with national and international homeland
+              security and defense authorities to tailor our services to the
+              application requirements of our customers.
+            </p>
+            <p>
+              We offer a full range of products from our technology partners and
+              are able to meet specific customer specifications, whether for
+              research or commercial R&amp;D purposes.
+            </p>
+          </div>
+          <div class="who-image-wrapper reveal">
+            <div class="globe-placeholder">
+              <span class="globe-label">Globe Image</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         WHAT WE DO
+         ════════════════════════════════════ -->
+    <section class="section what-we-do" id="what-we-do">
+      <div class="section-container">
+        <p class="section-label reveal">What We Do</p>
+        <h2 class="section-heading reveal">Our Core Capabilities</h2>
+        <div class="section-divider reveal"></div>
+
+        <div class="services-grid">
+          <!-- Card 1: Integrated Security -->
+          <div class="service-card reveal">
+            <div class="service-image">
+              <span class="service-image-label">Placeholder Image</span>
+            </div>
+            <div class="service-body">
+              <h3 class="service-title">Integrated Security Integration</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+              <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit anim id est laborum.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2: Advanced Materials -->
+          <div class="service-card reveal">
+            <div
+              class="service-image"
+              style="
+                background: linear-gradient(135deg, #c5d0e6 0%, #aebdd8 100%);
+              "
+            >
+              <span class="service-image-label">Placeholder Image</span>
+            </div>
+            <div class="service-body">
+              <h3 class="service-title">Advanced Materials</h3>
+              <p>
+                Innovative advanced materials and detectors, leveraging unique
+                automated continuous crystal growth technologies to produce
+                high-performance, uniform crystals.
+              </p>
+              <p>
+                These eco-friendly, high-yield processes deliver exceptional
+                results in nuclear physics, medical imaging, and industrial
+                applications, including custom detectors for alpha, beta, gamma,
+                and neutron radiation. We collaborate with leading R&amp;D
+                centers to drive technological advancements, offering a wide
+                array of materials and integrated detectors.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         CONTACT
+         ════════════════════════════════════ -->
+    <section class="section contact" id="contact">
+      <div class="section-container">
+        <div class="contact-grid">
+          <div class="reveal">
+            <p class="section-label">Contact Us</p>
+            <h2 class="section-heading">Get in Touch</h2>
+            <div class="section-divider"></div>
+            <div class="contact-info">
+              <p>Am Dornbush 31, D-60320,<br />Frankfurt am Main, Germany</p>
+              <p style="margin-top: 16px">
+                Tel: <a href="tel:+496995297164">+49 699 529 7164</a>
+              </p>
+              <p>Email: <a href="mailto:info@folgat.eu">info@folgat.eu</a></p>
+            </div>
+            <div class="contact-actions">
+              <button class="btn-contact" onclick="openModal()">
+                Contact Us
+              </button>
+              <a
+                href="https://www.linkedin.com/company/folgat-ag-defence-&-security-systems/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="linkedin-link"
+                aria-label="Visit our LinkedIn page"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="reveal">
+            <div class="contact-map-placeholder">
+              <span class="map-label">Frankfurt am Main</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         FOOTER
+         ════════════════════════════════════ -->
+    <footer class="footer">
+      <p>
+        &copy; <span>Folgat</span> — In business science since 1993. All rights
+        reserved.
+      </p>
+    </footer>
+
+    <!-- ════════════════════════════════════
+         CONTACT MODAL
+         ════════════════════════════════════ -->
+    <div class="modal-overlay" id="contactModal">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()" aria-label="Close">
+          &times;
+        </button>
+        <div class="form-fields" id="formFields">
+          <h2 class="modal-heading">Send us a message</h2>
+          <p class="modal-subtitle">
+            We'll get back to you as soon as possible.
+          </p>
+          <form id="contactForm" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Your full name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="your@email.com"
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                placeholder="How can we help you?"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Send Message</button>
+          </form>
+        </div>
+        <div class="form-success" id="formSuccess">
+          <div class="checkmark">
+            <svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6" /></svg>
+          </div>
+          <h3>Message Sent</h3>
+          <p>Thank you for reaching out. We'll be in touch shortly.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════
+         SCRIPTS
+         ════════════════════════════════════ -->
+    <script>
+      // Navbar scroll effect
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 40);
+      });
+
+      // Mobile nav toggle
+      const navToggle = document.getElementById("navToggle");
+      const navLinks = document.getElementById("navLinks");
+      navToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+      });
+
+      // Close mobile nav on link click
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => navLinks.classList.remove("open"));
+      });
+
+      // Contact modal
+      function openModal() {
+        document.getElementById("contactModal").classList.add("active");
+        document.body.style.overflow = "hidden";
+        navLinks.classList.remove("open");
+      }
+
+      function closeModal() {
+        document.getElementById("contactModal").classList.remove("active");
+        document.body.style.overflow = "";
+        // Reset form after closing
+        setTimeout(() => {
+          document.getElementById("formFields").classList.remove("hide");
+          document.getElementById("formSuccess").classList.remove("show");
+          document.getElementById("contactForm").reset();
+        }, 350);
+      }
+
+      // Close modal on overlay click
+      document.getElementById("contactModal").addEventListener("click", (e) => {
+        if (e.target === e.currentTarget) closeModal();
+      });
+
+      // Close modal on Escape
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+      });
+
+      // Mock form submission
+      function handleSubmit(e) {
+        e.preventDefault();
+
+        const formData = {
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          message: document.getElementById("message").value,
+        };
+
+        // Mock HTTP request
+        console.log("Form data (mocked):", formData);
+
+        // Simulate network delay
+        const btn = e.target.querySelector(".btn-submit");
+        btn.textContent = "Sending...";
+        btn.disabled = true;
+
+        setTimeout(() => {
+          document.getElementById("formFields").classList.add("hide");
+          document.getElementById("formSuccess").classList.add("show");
+          btn.textContent = "Send Message";
+          btn.disabled = false;
+        }, 800);
+      }
+
+      // Scroll reveal animation
+      const revealElements = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        {
+          threshold: 0.15,
+          rootMargin: "0px 0px -40px 0px",
+        },
+      );
+
+      revealElements.forEach((el) => revealObserver.observe(el));
+    </script>
+  </body>
+</html>

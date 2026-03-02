@@ -310,10 +310,12 @@
 
       .section-label {
         font-family: var(--font-body);
-        font-size: 0.7rem;
+        font-size: 1.05rem;
+        font-weight: 600;
         letter-spacing: 0.2em;
         text-transform: uppercase;
-        color: var(--periwinkle);
+        color: var(--black);
+        line-height: 1.6;
         margin-bottom: 16px;
       }
 
@@ -347,19 +349,14 @@
         align-items: center;
       }
 
-      .who-text p {
+      .who-text p:not(.section-label) {
         font-size: 0.9rem;
         color: var(--slate);
         margin-bottom: 20px;
         line-height: 1.85;
       }
 
-      .who-text p:first-of-type {
-        font-size: 1.05rem;
-        color: var(--black);
-        font-weight: 600;
-        line-height: 1.6;
-      }
+
 
       .who-image-wrapper {
         position: relative;
@@ -427,6 +424,7 @@
       .what-we-do {
         background: var(--light-grey);
       }
+
 
       .services-grid {
         display: grid;

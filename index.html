@@ -76,16 +76,14 @@
       }
 
       .logo {
-        font-family: var(--font-heading);
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: var(--navy);
+        display: flex;
+        align-items: center;
         text-decoration: none;
-        letter-spacing: -0.02em;
       }
 
-      .logo span {
-        color: var(--periwinkle);
+      .logo img {
+        height: 2rem;
+        width: auto;
       }
 
       .nav-links {
@@ -946,7 +944,7 @@
          ════════════════════════════════════ -->
     <nav class="navbar-folgat" id="navbar">
       <div class="navbar-inner">
-        <a href="#" class="logo">Folgat<span>.</span></a>
+        <a href="#" class="logo"><img src="assets/logo.svg" alt="Folgat"></a>
         <ul class="nav-links" id="navLinks">
           <li><a href="#who-we-are">Who We Are</a></li>
           <li><a href="#what-we-do">What We Do</a></li>
@@ -1010,7 +1008,6 @@
               Leading Global Provider<br />of Advanced Materials
             </h2>
             <div class="section-divider"></div>
-            <p>Leading global provider of advanced materials.</p>
             <p>
               FOLGAT is a global innovative provider to the world's largest
               homeland security equipment manufacturers and CBRN producers. We

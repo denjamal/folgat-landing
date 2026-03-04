@@ -366,9 +366,16 @@
       }
 
       .who-image-wrapper img {
-        width: 100%;
-        height: 100%;
+        width: 125%;
+        height: 125%;
         object-fit: contain;
+        animation: floating 4s ease-in-out infinite alternate;
+      }
+
+      @keyframes floating {
+        from { transform: translate(0, 0px); }
+        65%  { transform: translate(0, 19px); }
+        to   { transform: translate(0, 0px); }
       }
 
       /* ═══════════════════════════════════════════

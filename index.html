@@ -365,56 +365,10 @@
         justify-content: center;
       }
 
-      .globe-placeholder {
+      .who-image-wrapper img {
         width: 100%;
         height: 100%;
-        border-radius: 50%;
-        background:
-          radial-gradient(
-            circle at 35% 35%,
-            rgba(117, 139, 179, 0.3) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 65% 65%,
-            rgba(14, 45, 135, 0.15) 0%,
-            transparent 40%
-          ),
-          linear-gradient(135deg, var(--light-grey) 0%, #e8edf5 100%);
-        position: relative;
-        overflow: hidden;
-        border: 1px solid rgba(117, 139, 179, 0.15);
-      }
-
-      .globe-placeholder::before {
-        content: "";
-        position: absolute;
-        inset: 15%;
-        border-radius: 50%;
-        border: 1px dashed rgba(14, 45, 135, 0.12);
-      }
-
-      .globe-placeholder::after {
-        content: "";
-        position: absolute;
-        top: 10%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 1px;
-        height: 80%;
-        background: rgba(14, 45, 135, 0.08);
-      }
-
-      .globe-label {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-family: var(--font-body);
-        font-size: 0.65rem;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: var(--periwinkle);
+        object-fit: contain;
       }
 
       /* ═══════════════════════════════════════════
@@ -446,36 +400,13 @@
       .service-image {
         width: 100%;
         height: 260px;
-        background: linear-gradient(135deg, #dce3f0 0%, #c5d0e6 100%);
-        position: relative;
         overflow: hidden;
       }
 
-      .service-image::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: repeating-linear-gradient(
-          45deg,
-          transparent,
-          transparent 40px,
-          rgba(14, 45, 135, 0.03) 40px,
-          rgba(14, 45, 135, 0.03) 41px
-        );
-      }
-
-      .service-image-label {
-        position: absolute;
-        bottom: 16px;
-        left: 20px;
-        font-family: var(--font-body);
-        font-size: 0.6rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--slate);
-        z-index: 1;
-        background: rgba(255, 255, 255, 0.85);
-        padding: 4px 10px;
+      .service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       .service-body {
@@ -590,14 +521,17 @@
         fill: currentColor;
       }
 
-      .contact-map {
+      .contact-image {
         width: 100%;
         height: 320px;
         overflow: hidden;
       }
 
-      .contact-map iframe {
-        display: block;
+      .contact-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
       }
 
       /* ═══════════════════════════════════════════
@@ -943,7 +877,7 @@
           loop
           playsinline
           preload="auto"
-          src="https://testfolgat.my.canva.site/_assets/video/60452bd4decd2a7f5a0cbbf3c213c0bf.mp4"
+          src="assets/video_background.mp4"
         ></video>
       </div>
       <div class="hero-overlay"></div>
@@ -989,9 +923,7 @@
             </p>
           </div>
           <div class="who-image-wrapper reveal">
-            <div class="globe-placeholder">
-              <span class="globe-label">Globe Image</span>
-            </div>
+            <img src="assets/globe.png" alt="Global presence" />
           </div>
         </div>
       </div>
@@ -1010,7 +942,10 @@
           <!-- Card 1: Integrated Security -->
           <div class="service-card reveal">
             <div class="service-image">
-              <span class="service-image-label">Placeholder Image</span>
+              <img
+                src="assets/security_systems_folgat_.jpg"
+                alt="Integrated Security Systems"
+              />
             </div>
             <div class="service-body">
               <h3 class="service-title">Integrated Security Systems</h3>
@@ -1031,13 +966,11 @@
 
           <!-- Card 2: Advanced Materials -->
           <div class="service-card reveal">
-            <div
-              class="service-image"
-              style="
-                background: linear-gradient(135deg, #c5d0e6 0%, #aebdd8 100%);
-              "
-            >
-              <span class="service-image-label">Placeholder Image</span>
+            <div class="service-image">
+              <img
+                src="assets/advanced_materials_folgat_1.jpg"
+                alt="Advanced Materials"
+              />
             </div>
             <div class="service-body">
               <h3 class="service-title">Advanced Materials</h3>
@@ -1097,17 +1030,8 @@
             </div>
           </div>
           <div class="reveal">
-            <div class="contact-map">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2556.857036180675!2d8.6724!3d50.1233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bd0ea3b5e5e8a5%3A0x4a4b0e5c8e5e5e5e!2sAm%20Dornbusch%2031%2C%2060320%20Frankfurt%20am%20Main%2C%20Germany!5e0!3m2!1sen!2sde!4v1700000000000"
-                width="100%"
-                height="320"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              >
-              </iframe>
+            <div class="contact-image">
+              <img src="assets/contact_us.jpg" alt="Contact us" />
             </div>
           </div>
         </div>
